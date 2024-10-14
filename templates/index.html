@@ -180,6 +180,27 @@
 </script>
 
 
+
+<!-- output -->
+<script>
+    function scanWebsite(event) {
+        event.preventDefault();
+        const websiteUrl = document.getElementById('website_url').value;
+
+        fetch('/api/scan', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url: websiteUrl }),
+        })
+        .then(response => {
+            if (response.redirected) {
+                window.location.href = response.url;
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+
            
                <!-- URL Bar -->
             </section>
