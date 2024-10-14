@@ -1,0 +1,254 @@
+ <!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Website Scanner | Coming Soon Page</title>
+
+         <!-- CSS FILES  -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
+        
+        <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="/static/css/tooplate-kool-form-pack.css" rel="stylesheet">
+               
+
+
+    </head>
+    
+    <body>
+
+        <main>
+       
+            <header class="site-header">
+                <div class="container">
+                    <div class="row justify-content-between">
+
+                        <div class="col-lg-12 col-12 d-flex align-items-center">
+                                <i class="bi-box"></i>
+                                <a class="site-header-text d-flex justify-content-center align-items-center me-auto" href="{{ url_for('home') }}">
+                                <i class="bi-box"></i>
+
+                                <span>
+                                    Website Scanner
+                                </span>
+                            </a>
+
+                            <ul class="social-icon d-flex justify-content-center align-items-center mx-auto">
+                                <span class="text-white me-4 d-none d-lg-block">Stay connected</span>
+
+                                <li class="social-icon-item">
+                                    <a href="https://www.instagram.com/ajstyle_1110_?igsh=MWpycWk5OXdyMXZxdg%3D%3D" class="social-icon-link bi-instagram"></a>
+                                </li>
+
+                                <li class="social-icon-item">
+                                    <a href="#" class="social-icon-link bi-twitter"></a>
+                                </li>
+
+                                <li class="social-icon-item">
+                                    <a href="#" class="social-icon-link bi-whatsapp"></a>
+                                </li>
+                            </ul>
+
+                            <div>
+                                <a href="#" class="custom-btn custom-border-btn btn" data-bs-toggle="modal" data-bs-target="#subscribeModal">Notify me
+                                    <i class="bi-arrow-right ms-2"></i>
+                                </a>
+                            </div>
+
+                            <a class="bi-list offcanvas-icon" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu"></a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+
+            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">                
+                <div class="offcanvas-header">                    
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                
+                <div class="offcanvas-body d-flex flex-column justify-content-center align-items-center">
+                    <nav>
+                        <ul>
+                             <li>
+                                <a href="{{ url_for('login') }}">Login Form</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url_for('register') }}">Create an account</a>
+                            </li> 
+
+                            <li>
+                                <a href="{{ url_for('password_reset') }}">Password Reset</a>
+
+                            </li>
+
+                            <li>
+                                <a href="{{ url_for('trigger_404') }}">404 Page</a>
+
+                            </li>
+
+                            <li><a href="{{ url_for('contact_route') }}">Contact Form</a>
+
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div> 
+
+
+            <!-- Modal -->
+             <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form action="#" method="get" class="custom-form mt-lg-4 mt-2" role="form">
+                                <h2 class="modal-title" id="subscribeModalLabel">Stay up to date</h2>
+
+                                <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="your@email.com" required="">
+
+                                <button type="submit" class="form-control">Notify</button>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer justify-content-center">
+                            <p>By signing up, you agree to our Privacy Notice</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12 mx-auto">
+                            <small>our website is under construction. 
+                            <a rel="nofollow" target="_blank" href="/static/videos/video.mp4">Earth video by Pexels</a></small> 
+                            
+
+                <div class="video-wrap">
+                    <video autoplay="" loop="" muted="" class="custom-video" poster="">
+                        <source src="/static/videos/video.mp4" type="video/mp4">
+
+                        Your browser does not support the video tag.
+                    </video>
+               </div>
+           <!-- Updated URL Scan Section -->
+
+
+<script>
+    function scanWebsite() {
+        const websiteUrl = document.getElementById('website_url').value;
+        const resultDiv = document.getElementById('scanResult');
+
+        fetch('http://127.0.0.1:5000/api/scan', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: websiteUrl }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            resultDiv.innerHTML = `<h4>Scan Result:</h4><p>${data.message}</p>`;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            resultDiv.innerHTML = `<p style="color: red;">Error: Unable to scan the website.</p>`;
+        });
+    }
+</script>
+
+
+           
+               <!-- URL Bar -->
+            </section>
+            <section class="link-bar-section d-flex justify-content-center align-items-center" id="section_2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <h2 class="text-white mt-2 mb-4 pb-2 text-center">Enter a URL to Scan</h2>
+
+                            <form action="your-webscanner-url-endpoint" method="post" class="custom-form" role="form">
+                                <div class="input-group">
+                                    <input type="url" name="website_url" id="website_url" class="form-control" placeholder="https://example.com" required="">
+                                    <!-- <button type="submit" class="btn btn-primary" style="margin-bottom: 2.6% ">Scan</button> -->
+                                    <button type="submit" class="btn btn-primary" style="margin-bottom: 2.6%; padding: 10px 25px; font-size: 17px;">Scan</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+                   
+        </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/js/countdown.js"></script>
+        <script src="/static/js/init.js"></script>
+
+    </body>
+</html> 
+
+
+
+
+        <!-- Custom CSS for Centered Link Bar -->
+        <style>
+            .link-bar-section {
+                position: absolute;
+                bottom: 40px; /* Adjust as needed for spacing */
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                text-align: center;
+                padding: 20px;
+                min-height: 100vh; 
+            }
+
+            .link-bar-section .custom-form {
+                max-width: 600%; /* Max width of the form */
+                margin: 1 auto;
+            }
+
+            .link-bar-section .input-group {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .link-bar-section input {
+                flex: 10;
+                max-width: 600px; /* Max width of input box */
+                margin-right: 7px;
+                bottom: 2px;
+            }
+
+
+        </style>
+    
+  
